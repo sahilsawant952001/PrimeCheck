@@ -3,6 +3,22 @@ import { Text,View,StyleSheet,TouchableWithoutFeedback,Keyboard,Alert } from 're
 import Card from '../components/Card';
 import Number from '../components/Number';
 
+function isPrime(n) {
+              
+    var i, flag = true;
+    
+    for(i = 2; i <= n - 1; i++)
+        if (n % i == 0) {
+            flag = false;
+            break;
+        }
+          
+    if (flag == true)
+        return true;
+    else
+        return false;
+}
+
 const StartGameScreen = (props) => {
 
     const [number, setnumber] = useState('');
@@ -21,27 +37,37 @@ const StartGameScreen = (props) => {
 
     const confirmHandler = () => {
         const num = parseInt(number);
-        if(isNaN(num) || num<=0 || num>=99){
+        if(isNaN(num)){
             Alert.alert('INVALID NUMBER !!!!',
-            'NUMBER HAS TO BE BETWEEN 1 TO 99',
+            'ENTER VALID NUMBER',
             [{text:'OKAY',style:'destructive',onPress:clearNumber}])
         }else{
             setfinal(num);
+            const msg = 'YOUR SELECTED NUMBER '+ number;
             Keyboard.dismiss();
             setnumber('');
-            const msg = 'YOUR SELECTED NUMBER '+ num;
             setmessage(msg);
         }
     }
 
     const startGame = () => {
+        if(isPrime(final)){
+            Alert.alert('PRIME',final+' IS PRIME NUMBER',
+            [{text:'OKAY',style:'destructive',onPress:cancleGame}])
+        }else{
+            Alert.alert('NON PRIME',final+' IS NOT PRIME NUMBER',
+            [{text:'OKAY',style:'destructive',onPress:cancleGame}])
+        }
+    }
+
+    const cancleGame = () => {
         setfinal(null);
     }
 
     return  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.screen}>
-                    <Text style={styles.title}>Start A New Game!</Text>
-                    <Card number={number} numberHandler={numberHandler} clearNumber={clearNumber} confirmHandler={confirmHandler}/> 
+                    <Text style={styles.title}>CALCULATOR TO CHECK PRIME NUMBER</Text>
+                    {final!==null ? <Number number={final} startGame={startGame} cancleGame={cancleGame}/>:<Card number={number} numberHandler={numberHandler} clearNumber={clearNumber} confirmHandler={confirmHandler}/>}
                 </View>
             </TouchableWithoutFeedback>
 }
@@ -54,7 +80,8 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize:20,
-        marginVertical:40
+        marginVertical:40,
+        textAlign:'center'
     }
 })
 

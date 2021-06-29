@@ -6,7 +6,7 @@ import StartGameScreen from './screens/StartGameScreen';
 export default function App() {
   return (
     <View style={styles.screen}>
-        <Header title='GUESS A NUMBER'/>
+        <Header title='CHECK PRIME'/>
         <StartGameScreen/>
     </View>
   );

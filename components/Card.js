@@ -5,14 +5,14 @@ import Input from './Input';
 
 const Card = (props) => {
     return  <View style={styles.inputContainer}>
-                <Text style={styles.heading}>Select A Number</Text>
-                <Input number={props.number} numberHandler={props.numberHandler} style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType='number-pad' maxLength={2} />
+                <Text style={styles.heading}>SELECT A NUMBER</Text>
+                <Input number={props.number} numberHandler={props.numberHandler} style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType='number-pad' maxLength={5} />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button1}>
-                        <Button title='RESET' color={asscent} onPress={props.clearNumber}/>
+                        <Button title='CLEAR' color={asscent} onPress={props.clearNumber}/>
                     </View>
                     <View style={styles.button2}>
-                        <Button title='CONFIRM' color={primary} onPress={props.confirmHandler}/>
+                        <Button title='SELECT' color={primary} onPress={props.confirmHandler}/>
                     </View>
                 </View>
             </View>
