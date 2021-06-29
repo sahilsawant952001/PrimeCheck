@@ -1,14 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View} from 'react-native';
 import Header from './components/Header';
 import StartGameScreen from './screens/StartGameScreen';
 
 export default function App() {
+
   return (
-    <View style={styles.screen}>
-        <Header title='CHECK PRIME'/>
-        <StartGameScreen/>
-    </View>
+     <ScrollView>
+        <View style={styles.screen}>
+          <Header title='CHECK PRIME'/>
+          <StartGameScreen/>
+        </View>
+     </ScrollView>
   );
 }
 
