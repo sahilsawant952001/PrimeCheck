@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput,StyleSheet } from 'react-native';
 
 const Input = (props) => {
-    return  <TextInput {...props} style={{...props.style,...styles.input}} value={number} onChangeText={valueHandler}/>
+    return  <TextInput value={props.number} onChangeText={props.numberHandler} {...props} style={{...props.style,...styles.input}}/>
 }
 
 const styles = StyleSheet.create({
